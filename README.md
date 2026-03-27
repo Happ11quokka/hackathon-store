@@ -104,7 +104,7 @@ hack_store/
 │   │   ├── components/
 │   │   │   ├── chat/              # ChatInput, ChatMessage, ChatSidebar, TypingIndicator
 │   │   │   ├── events/            # EventCard
-│   │   │   ├── layout/            # AppShell, Sidebar, TopBar, BottomTabBar, CommandPalette
+│   │   │   ├── layout/            # AppShell, Sidebar, TopBar, BottomTabBar, CommandPalette, Footer, Navbar
 │   │   │   ├── projects/          # ProjectCard
 │   │   │   ├── recruit/           # RecruitCard, RecruitForm
 │   │   │   ├── ui/                # Badge, Button, Card, FilterChips, FilterPanel, Modal
