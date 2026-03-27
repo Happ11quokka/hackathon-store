@@ -188,15 +188,15 @@ npm start
 
 ---
 
-## 라이선스
-
-MIT License
-
----
-
 ## 팀원
 
 | 이름 | 담당 | 이메일 |
 |------|------|--------|
-| 어준호 | Backend, Infra | djwnsgh0248@hanyang.ac.kr |
-| 임동현 | AI Agent, Frontend | limdongxian1207@gmail.com |
+| 어준호 (Junho Uh) | Backend, Infra | djwnsgh0248@hanyang.ac.kr |
+| 임동현 (Donghyun Lim) | AI Agent, Frontend | limdongxian1207@gmail.com |
+
+---
+
+## 라이선스
+
+MIT License
