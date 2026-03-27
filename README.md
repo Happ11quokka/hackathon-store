@@ -46,6 +46,7 @@ KIROTHON Store는 대학생들이 해커톤, ICPBL, 동아리, 공모전 등 다
 
 - 앱 진입점은 저장소 루트가 아니라 `hackathon-store/` 입니다.
 - 현재 브랜치 기준 구현은 `src/app` 구조의 Next.js App Router UI 프로토타입입니다.
+- 실제 공통 레이아웃 연결은 `src/app/layout.tsx` -> `src/components/layout/AppShell.tsx` 입니다.
 - 로컬 기획 문서 폴더 `docs/` 는 `.gitignore` 에 포함되어 원격에 올리지 않습니다.
 
 ---
@@ -65,13 +66,25 @@ KIROTHON Store는 대학생들이 해커톤, ICPBL, 동아리, 공모전 등 다
 
 ```text
 hack_store/
+├── assets/
+│   ├── kiro.png                   # README 포스터 이미지
+│   └── 우수상.jpeg               # README 수상 이미지
 ├── hackathon-store/
+│   ├── next-env.d.ts
+│   ├── next.config.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   ├── tsconfig.json
+│   └── vitest.config.ts
+│
 │   ├── public/
 │   │   ├── posters/               # 대회 포스터 이미지
 │   │   └── thumbnails/            # 프로젝트 썸네일 이미지
+│
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── layout.tsx         # AppShell 진입점
+│   │   │   ├── layout.tsx         # RootLayout
 │   │   │   ├── page.tsx           # 홈 대시보드
 │   │   │   ├── chat/
 │   │   │   │   └── page.tsx       # AI 채팅 페이지
@@ -87,22 +100,23 @@ hack_store/
 │   │   │   │   └── page.tsx       # 팀원 모집
 │   │   │   └── vibe-coding/
 │   │   │       └── page.tsx       # Vibe Coding 가이드
+│
 │   │   ├── components/
-│   │   │   ├── layout/            # Sidebar, TopBar, BottomTabBar, CommandPalette
-│   │   │   ├── chat/
-│   │   │   ├── projects/
-│   │   │   ├── events/
-│   │   │   ├── recruit/
-│   │   │   ├── vibe-coding/
-│   │   │   └── ui/
-│   │   ├── data/                  # 프로젝트/대회/채팅 mock data
+│   │   │   ├── chat/              # ChatInput, ChatMessage, ChatSidebar, TypingIndicator
+│   │   │   ├── events/            # EventCard
+│   │   │   ├── layout/            # AppShell, Sidebar, TopBar, BottomTabBar, CommandPalette
+│   │   │   ├── projects/          # ProjectCard
+│   │   │   ├── recruit/           # RecruitCard, RecruitForm
+│   │   │   ├── ui/                # Badge, Button, Card, FilterChips, FilterPanel, Modal
+│   │   │   └── vibe-coding/       # IdeaForm, PromptBlock, StepCard
+│   │   ├── data/                  # chatResponses, events, projects, recruits, vibeCodingGuide
 │   │   ├── hooks/                 # useTheme
-│   │   ├── lib/                   # 공통 타입, 필터 유틸
-│   │   ├── styles/                # 전역 스타일
-│   │   └── __tests__/             # unit / property tests
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── vitest.config.ts
+│   │   ├── lib/                   # filters, types
+│   │   ├── styles/                # globals.css
+│   │   └── __tests__/
+│   │       ├── setup.ts
+│   │       ├── properties/        # 속성 기반 테스트
+│   │       └── unit/data/         # mock data 테스트
 ├── docs/                          # 기획 문서 (git 제외)
 ├── .gitignore
 └── README.md
