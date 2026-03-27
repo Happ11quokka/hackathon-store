@@ -1,16 +1,30 @@
-# 기획/문서 폴더
+# Planning / local docs
 docs/
-
-# 플래닝 파일
 task_plan.md
 findings.md
 progress.md
 
-# 데이터
-data/
-
-# Claude
+# Local AI tooling
 .claude/
+.kiro/
+.superpowers/
+
+# App artifacts
+hackathon-store/node_modules/
+hackathon-store/.next/
+hackathon-store/coverage/
+hackathon-store/.turbo/
+hackathon-store/.vercel/
+hackathon-store/.env.local
+hackathon-store/.env.development.local
+hackathon-store/.env.test.local
+hackathon-store/.env.production.local
+
+# Logs
+hackathon-store/npm-debug.log*
+hackathon-store/yarn-debug.log*
+hackathon-store/yarn-error.log*
+hackathon-store/pnpm-debug.log*
 
 # OS
 .DS_Store

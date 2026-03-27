@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand */
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+  --color-brand-950: #2e1065;
+
+  /* Semantic — Light (default) */
+  --color-surface: #faf9fb;
+  --color-card: #ffffff;
+  --color-border: #e9e5f0;
+  --color-primary: #1a1625;
+  --color-secondary: #5c566e;
+  --color-tertiary: #9690a6;
+  --color-brand-subtle: #f3f0f8;
+
+  /* Sidebar (always dark) */
+  --color-sidebar-bg: #1a1625;
+  --color-sidebar-text: #a78bfa;
+  --color-sidebar-active: rgba(139, 92, 246, 0.15);
+  --color-sidebar-muted: #7c6fad;
+  --color-sidebar-border: #2d2640;
+}
+
+/* Dark mode via data attribute */
+[data-theme="dark"] {
+  --color-surface: #0f0b1a;
+  --color-card: #1a1625;
+  --color-border: #2d2640;
+  --color-primary: #f3f0f8;
+  --color-secondary: #9690a6;
+  --color-tertiary: #5c566e;
+  --color-brand-subtle: #2d2146;
+}
+
+/* Dark mode via system preference (when no explicit theme set) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-surface: #0f0b1a;
+    --color-card: #1a1625;
+    --color-border: #2d2640;
+    --color-primary: #f3f0f8;
+    --color-secondary: #9690a6;
+    --color-tertiary: #5c566e;
+    --color-brand-subtle: #2d2146;
+  }
+}
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

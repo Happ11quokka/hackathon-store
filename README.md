@@ -1,75 +1,37 @@
 # KIROTHON Store
 
-**대학 프로젝트의 모든 것 — 아카이빙 + AI 추천 + 팀빌딩 통합 플랫폼**
+**대학 프로젝트의 모든 것 - 아카이빙 + AI 추천 + 팀빌딩 통합 플랫폼**
 
-<p align="center">
-  <img src="assets/kiro.png" alt="KIROTHON 포스터" height="400" />
-  <img src="assets/우수상.jpeg" alt="우수상 수상" height="400" />
-</p>
+> KIROTHON 2026 제출 프로젝트이자, 현재는 `Next.js` 기반 UI 프로토타입 중심으로 정리된 코드베이스입니다.
 
-대학생 해커톤/공모전/ICPBL 프로젝트를 탐색하고, AI 비서에게 맞춤 추천을 받을 수 있는 웹 플랫폼
-
-> [!IMPORTANT]
-> **KIROTHON 해커톤 — 우수상 수상**
-
-[![Award](https://img.shields.io/badge/KIROTHON-우수상-C0C0C0?logo=trophy&logoColor=white)]()
-
+[![Award](https://img.shields.io/badge/KIROTHON-%EC%9A%B0%EC%88%98%EC%83%81-C0C0C0?logo=trophy&logoColor=white)]()
 ![Next.js](https://img.shields.io/badge/Next.js_16-000000?logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?logo=tailwindcss&logoColor=white)
-![AWS Bedrock](https://img.shields.io/badge/AWS_Bedrock-232F3E?logo=amazonaws&logoColor=white)
-![DynamoDB](https://img.shields.io/badge/DynamoDB-4053D6?logo=amazondynamodb&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?logo=openai&logoColor=white)
-![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?logo=shadcnui&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=white)
 
 ---
 
 ## 프로젝트 개요
 
-KIROTHON Store는 대학생들이 해커톤, ICPBL, 동아리, 공모전 등 다양한 프로젝트 활동을 탐색하고, AI 비서를 통해 맞춤형 프로젝트 추천과 기술 스택 가이드를 받을 수 있는 웹 플랫폼입니다. AWS Bedrock(Claude 3.5 Sonnet)과 OpenAI(GPT-4o-mini) 이중 AI 백엔드를 통해 안정적인 추천 서비스를 제공합니다.
+Hackathon Store는 대학생이 프로젝트 경험을 탐색하고, 대회 정보를 확인하고, 팀원을 찾고, 아이디어를 빠르게 구현 흐름으로 연결할 수 있도록 설계된 플랫폼입니다.
+
+현재 저장소는 백엔드 연동보다 **프론트엔드 UI 프로토타입**에 초점을 맞추고 있으며, 모든 화면은 `hackathon-store/` 아래의 Next.js 앱에서 동작합니다. AI 채팅, 프로젝트 탐색, 대회 보드, 팀원 모집, Vibe Coding 가이드는 모두 목(mock) 데이터 기반으로 시연됩니다.
 
 ---
 
-## 주요 기능
+## 현재 구현 범위
 
-| 기능 | 설명 |
-|------|------|
-| **AI 채팅 추천** | AWS Bedrock + OpenAI 이중 백엔드로 프로젝트/이벤트 맞춤 추천 |
-| **프로젝트 탐색/필터** | 활동 유형별(해커톤, ICPBL, 동아리, 공모전) 필터링 및 텍스트 검색 |
-| **이벤트 목록** | 진행 중인 해커톤/공모전 정보 제공 |
-| **Vibe Coding 가이드** | AI 비서를 통한 기술 스택 추천 및 개발 가이드 |
-| **프로젝트 상세** | 수상 이력, 기술 스택, GitHub/데모 링크 등 상세 정보 |
-
----
-
-## 시스템 아키텍처
-
-### 이중 AI 백엔드
-
-| 계층 | 역할 | 기술 |
-|------|------|------|
-| **Primary** | AI 추천 (Full Context) | AWS Bedrock — Claude 3.5 Sonnet |
-| **Fallback** | RAG 기반 추천 | OpenAI — GPT-4o-mini |
-| **Local Fallback** | 규칙 기반 응답 | 키워드 매칭 + 사전 정의 응답 |
-
-### 데이터 흐름
-
-```
-사용자 → Next.js App Router → API Routes
-                                  ├── /api/chat    → Bedrock / OpenAI → AI 응답
-                                  ├── /api/projects → DynamoDB / JSON Fallback
-                                  └── /api/events   → DynamoDB / JSON Fallback
-```
-
-### RAG 검색 스코어링
-
-| 조건 | 점수 |
-|------|------|
-| 키워드 매칭 | +2 |
-| 수상 이력 보유 | +1 |
-| 활동 유형 일치 (ICPBL, 해커톤 등) | +5 |
-| 기술 키워드 일치 (AI/ML, Web, Mobile) | +3 |
+- 사이드바 + 탑바 + 모바일 탭바로 구성된 앱 셸
+- 대시보드형 홈 화면과 Bento 스타일 진입 카드
+- AI 채팅 UI, 추천 질문 칩, 타이핑 인디케이터
+- 프로젝트 아카이브, 검색/필터, 상세 페이지
+- 대회 보드, 상태별 탐색, 상세 페이지
+- 팀원 모집 리스트, 모집 글 작성 폼, 상세 모달
+- Vibe Coding 가이드와 프롬프트 블록 UI
+- 다크 모드 토글, `Cmd/Ctrl + K` 커맨드 팔레트
+- `Vitest` + `Testing Library` 기반 단위/속성 테스트
 
 ---
 
@@ -77,101 +39,92 @@ KIROTHON Store는 대학생들이 해커톤, ICPBL, 동아리, 공모전 등 다
 
 | 분류 | 기술 |
 |------|------|
-| **Frontend** | Next.js 16, React 19, TypeScript, Tailwind CSS 4 |
-| **UI** | shadcn/ui, Lucide React, tw-animate-css |
-| **AI** | AWS Bedrock (Claude 3.5 Sonnet), OpenAI (GPT-4o-mini) |
-| **Database** | AWS DynamoDB (Fallback: JSON seed data) |
-| **Markdown** | react-markdown, remark-gfm |
-| **Infra** | AWS SDK v3 (Bedrock Runtime, DynamoDB) |
+| Frontend | Next.js 16, React 19, TypeScript |
+| Styling | Tailwind CSS 4 |
+| UI | Lucide React |
+| Testing | Vitest, Testing Library, fast-check, jsdom |
+| Data | TypeScript mock data modules |
 
 ---
 
 ## 프로젝트 구조
 
-```
-kirothon_/
+실제 서비스 앱은 루트가 아니라 `hackathon-store/` 폴더 안에 있습니다.
+
+```text
+.
 ├── hackathon-store/
+│   ├── public/
+│   │   ├── posters/               # 대회 포스터 이미지
+│   │   └── thumbnails/            # 프로젝트 썸네일 이미지
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── layout.tsx                # 루트 레이아웃 (Header 포함)
-│   │   │   ├── page.tsx                  # 랜딩 페이지
-│   │   │   ├── chat/
-│   │   │   │   └── page.tsx              # AI 채팅 인터페이스
+│   │   │   ├── page.tsx           # 홈 대시보드
+│   │   │   ├── chat/page.tsx
 │   │   │   ├── projects/
-│   │   │   │   ├── page.tsx              # 프로젝트 목록/필터
-│   │   │   │   └── [id]/
-│   │   │   │       └── page.tsx          # 프로젝트 상세
-│   │   │   └── api/
-│   │   │       ├── chat/route.ts         # 채팅 API
-│   │   │       ├── projects/route.ts     # 프로젝트 API
-│   │   │       ├── events/route.ts       # 이벤트 API
-│   │   │       └── seed/route.ts         # DB 시딩 API
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [id]/page.tsx
+│   │   │   ├── events/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [id]/page.tsx
+│   │   │   ├── recruit/page.tsx
+│   │   │   ├── vibe-coding/page.tsx
+│   │   │   └── layout.tsx         # AppShell 진입점
 │   │   ├── components/
-│   │   │   ├── layout/Header.tsx         # 네비게이션 헤더
+│   │   │   ├── layout/            # AppShell, Sidebar, TopBar, BottomTabBar, CommandPalette
 │   │   │   ├── chat/
-│   │   │   │   ├── ChatInterface.tsx     # 채팅 UI
-│   │   │   │   ├── ChatMessage.tsx       # 메시지 렌더링
-│   │   │   │   └── ProjectRecommendCard.tsx
-│   │   │   ├── project/
-│   │   │   │   ├── ProjectCard.tsx       # 프로젝트 카드
-│   │   │   │   └── FilterBar.tsx         # 필터/검색 바
-│   │   │   └── event/EventCard.tsx       # 이벤트 카드
-│   │   ├── lib/
-│   │   │   ├── types.ts                  # TypeScript 인터페이스
-│   │   │   ├── bedrock.ts                # AWS Bedrock 연동
-│   │   │   ├── ai.ts                     # OpenAI RAG 연동
-│   │   │   ├── db.ts                     # DynamoDB 클라이언트
-│   │   │   ├── seed.ts                   # 시드 데이터 로직
-│   │   │   └── utils.ts                  # 유틸리티
-│   │   └── data/
-│   │       ├── seed_projects.json        # 프로젝트 시드 데이터
-│   │       └── seed_events.json          # 이벤트 시드 데이터
+│   │   │   ├── projects/
+│   │   │   ├── events/
+│   │   │   ├── recruit/
+│   │   │   ├── vibe-coding/
+│   │   │   └── ui/
+│   │   ├── data/                  # 프로젝트/대회/채팅 mock data
+│   │   ├── hooks/                 # useTheme
+│   │   ├── lib/                   # 공통 타입, 필터 유틸
+│   │   ├── styles/                # 전역 스타일, 디자인 토큰
+│   │   └── __tests__/             # unit / property tests
+│   ├── next.config.ts
 │   ├── package.json
-│   └── tsconfig.json
-├── docs/                                 # 기획 문서 (git 제외)
-├── data/                                 # 데이터 파일
+│   ├── tsconfig.json
+│   └── vitest.config.ts
 ├── .gitignore
 └── README.md
 ```
+
+로컬 작업용 `docs/` 폴더는 요구사항, 설계, 리디자인 문서를 담고 있으며 `.gitignore`에 포함되어 원격 저장소에는 올리지 않는 기준으로 관리합니다.
 
 ---
 
 ## 실행 방법
 
 ```bash
-# 의존성 설치
 cd hackathon-store
 npm install
-
-# 개발 서버 실행
 npm run dev
 ```
 
-`.env.local` 파일 생성:
+개발 서버는 기본적으로 `http://localhost:3000` 에서 실행됩니다.
 
-```env
-# AWS Bedrock
-AWS_REGION=us-east-1
-AWS_ACCESS_KEY_ID=your_access_key
-AWS_SECRET_ACCESS_KEY=your_secret_key
-BEDROCK_MODEL_ID=anthropic.claude-3-5-sonnet-20241022-v2:0
+---
 
-# OpenAI (Fallback)
-OPENAI_API_KEY=your_openai_api_key
-OPENAI_MODEL=gpt-4o-mini
-
-# DynamoDB
-DYNAMODB_PROJECTS_TABLE=HackathonStore-Projects
-DYNAMODB_EVENTS_TABLE=HackathonStore-Events
-```
+## 스크립트
 
 ```bash
-# 빌드
-npm run build
+cd hackathon-store
 
-# 프로덕션 실행
-npm start
+npm run dev     # 개발 서버
+npm run build   # 프로덕션 빌드
+npm run start   # 프로덕션 실행
+npm run test    # 테스트 실행
 ```
+
+---
+
+## 작업 메모
+
+- 현재 기준 저장소의 진입점은 루트가 아니라 `hackathon-store/` 입니다.
+- `docs/` 는 기획/설계 문서 전용 로컬 폴더이며 Git 추적 대상에서 제외됩니다.
+- 기존 README의 프로젝트 소개와 수상 맥락은 유지하되, 구현 구조는 최신 UI 프로토타입 기준으로 갱신했습니다.
 
 ---
 
