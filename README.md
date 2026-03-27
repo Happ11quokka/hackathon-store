@@ -188,14 +188,15 @@ npm start
 
 ---
 
-## 팀 정보
-
-| 이름 | 역할 | GitHub |
-|------|------|--------|
-| **임동현** | AI Pipeline, Frontend, Infra | [@Happ11quokka](https://github.com/Happ11quokka) |
-
----
-
 ## 라이선스
 
 MIT License
+
+---
+
+## 팀원
+
+| 이름 | 담당 | 이메일 |
+|------|------|--------|
+| 어준호 | Backend, Infra | djwnsgh0248@hanyang.ac.kr |
+| 임동현 | AI Agent, Frontend | limdongxian1207@gmail.com |
