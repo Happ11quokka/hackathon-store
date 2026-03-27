@@ -2,6 +2,11 @@
 
 **대학 프로젝트의 모든 것 — 아카이빙 + AI 추천 + 팀빌딩 통합 플랫폼**
 
+<p align="center">
+  <img src="assets/kiro.png" alt="KIROTHON 포스터" height="400" />
+  <img src="assets/우수상.jpeg" alt="우수상 수상" height="400" />
+</p>
+
 대학생 해커톤/공모전/ICPBL 프로젝트를 탐색하고, AI 비서에게 맞춤 추천을 받을 수 있는 웹 플랫폼
 
 > [!IMPORTANT]
