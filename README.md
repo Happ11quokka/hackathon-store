@@ -31,19 +31,6 @@ KIROTHON Store는 대학생들이 해커톤, ICPBL, 동아리, 공모전 등 다
 
 ---
 
-## 담당 역할
-
-**임동현** — AI Pipeline, Frontend, Infra
-
-| 영역 | 기여 내용 |
-|------|-----------|
-| AI Pipeline | AWS Bedrock 연동, Two-Stage Prompting, RAG 기반 프로젝트 검색 |
-| Frontend | Next.js App Router 기반 UI, shadcn/ui 컴포넌트, 반응형 레이아웃 |
-| Infra | AWS DynamoDB 데이터베이스, Bedrock 모델 연동, 환경 설정 |
-| Data | 프로젝트/이벤트 시드 데이터 구축, 자동 시딩 API |
-
----
-
 ## 주요 기능
 
 | 기능 | 설명 |
